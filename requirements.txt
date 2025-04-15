@@ -13,5 +13,5 @@ jinja2==3.1.6
 python-decouple==3.8
 pyyaml==6.0.2
 azure-search-documents==11.5.2
-psycopg2==2.9.9
+psycopg2==2.9.1
 langchain-cohere==0.4.3
