@@ -1,0 +1,182 @@
+{
+    "azai_gtp4o": {
+        "connection_type": "AzureOpenAIChat",
+        "model_name": "{AZURE_OPENAI_CHAT_DEPLOYMENT}",
+        "model_version": "{AZURE_OPENAI_API_VERSION}",
+        "api_key": "{AZURE_OPENAPI_KEY}",
+        "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
+        "api_auth": "api_key",
+        "model_params": {
+            "max_tokens": 512,
+            "temperature": 0.00000001,
+            "frequency_penalty": 0.000005
+        }
+    },
+    "azai_gtp4o_mini": {
+        "connection_type": "AzureOpenAIChat",
+        "model_name": "{AZURE_OPENAI_CHAT_DEPLOYMENT_MINI}",
+        "model_version": "{AZURE_OPENAI_API_VERSION}",
+        "api_key": "{AZURE_OPENAPI_KEY}",
+        "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
+        "api_auth": "service_principal",
+        "model_params": {
+            "max_tokens": 256,
+            "temperature": 0.00005,
+            "frequency_penalty": 0.00005
+        }
+    },
+    "azai_embedding": {
+        "connection_type": "AzureOpenAIEmbedding",
+        "model_name": "pilotoAI-sd-embedding",
+        "model_version": "{AZURE_OPENAI_API_VERSION}",
+        "api_key": "{AZURE_OPENAPI_KEY}",
+        "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
+        "api_auth": "service_principal",
+        "model_params": {}
+    },
+    "azai_description": {
+        "connection_type": "AzureOpenAIChat",
+        "model_name": "{AZURE_OPENAI_CHAT_DEPLOYMENT_MINI}",
+        "model_version": "{AZURE_OPENAI_API_VERSION}",
+        "api_key": "{AZURE_OPENAPI_KEY}",
+        "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
+        "api_auth": "service_principal",
+        "model_params": {
+            "max_tokens": 1024,
+            "temperature": 0.00000001,
+            "top_p": 0.5,
+            "frequency_penalty": 0.2,
+            "presence_penalty": 0.4
+        }
+    },
+    "azai_attachments": {
+        "connection_type": "AzureOpenAIChat",
+        "model_name": "{AZURE_OPENAI_CHAT_DEPLOYMENT_MINI}",
+        "model_version": "{AZURE_OPENAI_API_VERSION}",
+        "api_key": "{AZURE_OPENAPI_KEY}",
+        "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
+        "api_auth": "service_principal",
+        "model_params": {
+            "max_tokens": 1024,
+            "temperature": 0.00000001,
+            "top_p": 0.5,
+            "frequency_penalty": 0.2,
+            "presence_penalty": 0.4
+        }
+    },
+    "ollama_modelX": {
+        "connection_type": "OllamaChat",
+        "model_name": "modelX",
+        "model_params": {}
+    },
+    "aisearch_sdaihelper": {
+        "connection_type": "AISearchVectorDB",
+        "index_name": "{AI_SEARCH_INDEX}",
+        "api_key": "{AI_SEARCH_KEY}",
+        "index_vector": "abstractVector",
+        "api_endpoint": "{AI_SEARCH_ENDPOINT}",
+        "index_fields": [
+            "abstract",
+            "info_text",
+            "score_data",
+            "info_data",
+            "file_content",
+            "auto",
+            "plantilla",
+            "success",
+            "description"
+        ],
+        "index_params": {}
+    },
+    "pgvector_sdaihelper": {
+        "connection_type": "PGVectorDB",
+        "index_name": "sd_embeddings",
+        "index_key": "abstractKey",
+        "index_vector": "abstractVector",
+        "api_key": "",
+        "api_endpoint": "host={POSTGRES_HOST} port={POSTGRES_PORT} dbname={POSTGRES_DATABASE} user={POSTGRES_USERNAME} password={POSTGRES_PASSWORD}",
+        "index_fields": [
+            "abstract",
+            "info_text",
+            "score_data",
+            "info_data",
+            "file_content",
+            "auto",
+            "plantilla",
+            "success",
+            "description"
+        ],
+        "index_params": {}
+    },
+    "OllamaChat": {
+        "connection_type": "OllamaChat",
+        "model_name": "{LLAMA_MODEL}",
+        "model_version": "{LLAMA_API_VERSION}",
+        "api_key": "{LLAMA_API_KEY}",
+        "api_endpoint": "{LLAMA_ENDPOINT}",
+        "model_params": {
+            "temperature": 0.00000001
+        }
+    },
+    "OllamaEmbedding": {
+        "connection_type": "OllamaEmbedding",
+        "model_name": "{LLAMA_MODEL_EMBEDDING}",
+        "model_version": "{LLAMA_API_VERSION}",
+        "api_key": "{LLAMA_API_KEY}",
+        "api_endpoint": "{LLAMA_ENDPOINT}",
+        "model_params": {
+            "temperature": 0.00000001
+        }
+    },
+    
+    "LMStudioChat":{
+        "connection_type": "LMStudioChat",
+        "model_name": "{LM_MODEL}",
+        "model_version":"",
+        "api_key": "",
+        "api_endpoint":"http://127.0.0.1:1234/v1/",
+        "model_params": {
+            "temperature": 0.00000001
+        }
+    },
+    "LMEmbedding":{
+        "connection_type": "LMStudioEmbedding",
+        "model_name":"{LM_MODEL_EMBEDDING}",
+        "model_version": "",
+        "api_key": "",
+        "api_endpoint": "http://127.0.0.1:1234/v1/",
+        "model_params": {
+            
+        }
+    },
+    "HFEmbedding":{
+        "connection_type": "HFEmbedding",
+        "model_name": "{HF_EMB_MODEL_EMBEDDING}",
+        "model_version": "",
+        "api_key": "",
+        "api_endpoint": "http://127.0.0.1:1234/v1/",
+        "model_params": {
+            
+        }
+    },
+    "DeepSeekChat":{
+        "connection_type": "DeepSeekChat",
+        "model_name": "{DEEPSEEK_MODEL}",
+        "model_version":"",
+        "api_key": "{DEEPSEEK_API_KEY}",
+        "api_endpoint": "https://api.deepseek.com",
+        "model_params": {
+            "temperature": 0.00000001
+        }
+    },
+    "GoogleAIChatModel":{
+        "connection_type": "GoogleAIChatModel",
+        "model_name": "{GOOGLE_MODEL}",
+        "model_version": "",
+        "api_key": "{GOOGLE_API_KEY}",
+        "api_endpoint": "",
+        "model_params": {
+            "temperature": 0.00000001
+        }
+    }
+}

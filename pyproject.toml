@@ -1,0 +1,40 @@
+[project]
+name = "ai_factory_model"
+version = "0.0.1"
+description = "AI Library to authenticate and manage LLM models"
+authors = []
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai>=1.72.0",
+    "azure-core>=1.33.0",
+    "azure-identity>=1.21.0",
+    "azure-keyvault-secrets>=4.9.0",
+    "langchain>=0.3.23",
+    "langchain_openai>=0.3.12",
+    "langchain_azure_ai>=0.1.2; python_version<'3.13'",
+    "langchain_google_genai>=2.1.2",
+    "langchain_community>=0.3.21",
+    "langchain_ollama>=0.3.1",
+    "jinja2>=3.1.6",
+    "python-decouple>=3.8",
+    "pyyaml>=6.0.2",
+    "azure-search-documents==11.5.2"
+]
+classifiers=[
+    "Environment :: Web Environment",
+    "Framework :: Flask",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[build-system]
+requires = ["setuptools>=78.1.0", "wheel>=0.45.1", "build>=1.2.2"]
+build-backend = "setuptools.build_meta"
