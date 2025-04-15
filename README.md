@@ -23,25 +23,12 @@ Esta librería está diseñada para facilitar la interacción con LLMs de OpenAI
 
 ## Instalación
 
-Desde PyPI (una vez publicado):
+Desde PyPI:
 
 ```bash
 pip install ai-factory-model
 ```
 
-Desde un repositorio:
-
-```bash
-pip install git+https://github.com/jprofile/model_factory.git
-```
-
-Instalación local (modo editable para desarrollo):
-
-```bash
-git clone https://github.com/jprofile/model_factory.git
-cd llm
-pip install -e .
-```
 
 ## Puesta a punto
 Para poder hacer uso de la factoría de modelos es necesario definir una serie de variables de entorno, que permiten la conexión a los distintos servicios de alojamiento de modelos:
