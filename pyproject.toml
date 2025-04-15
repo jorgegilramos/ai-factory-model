@@ -20,7 +20,9 @@ dependencies = [
     "jinja2>=3.1.6",
     "python-decouple>=3.8",
     "pyyaml>=6.0.2",
-    "azure-search-documents==11.5.2"
+    "azure-search-documents==11.5.2",
+    "psycopg[binary]",
+    "langchain-cohere==0.4.3"
 ]
 classifiers=[
     "Environment :: Web Environment",
