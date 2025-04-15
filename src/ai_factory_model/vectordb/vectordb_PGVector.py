@@ -2,7 +2,7 @@ from .vectordb_base import BaseVectorDB
 
 from logging import error
 import os
-import psycopg2
+import psycopg
 
 # https://python.langchain.com/docs/integrations/vectorstores/pgvector/
 # https://github.com/langchain-ai/langchain-postgres/blob/main/examples/vectorstore.ipynb
@@ -16,7 +16,7 @@ class PGVectorDB(BaseVectorDB):
 
     def initialize_vectorDB(self, alias):
         # obtener la conexión a la base de datos
-        self.client = psycopg2.connect(self.endpoint)
+        self.client = psycopg.connect(self.endpoint)
         self.alias = alias
         return self
 
