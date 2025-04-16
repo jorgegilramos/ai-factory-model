@@ -51,9 +51,9 @@ def get_var(var_name: str, *args, **kwargs):
     return value
 
 
-AZURE_TENANT_ID = get_var("AZURE_TENANT_ID", "")
-AZURE_CLIENT_ID = get_var("AZURE_CLIENT_ID", "")
-AZURE_CLIENT_SECRET = get_var("AZURE_CLIENT_SECRET", "")
+AZURE_TENANT_ID = get_var("AZURE_TENANT_ID", None)
+AZURE_CLIENT_ID = get_var("AZURE_CLIENT_ID", None)
+AZURE_CLIENT_SECRET = get_var("AZURE_CLIENT_SECRET", None)
 AZURE_TOKEN_URL = get_var("AZURE_TOKEN_URL", default="https://cognitiveservices.azure.com/.default")
 
 # These variables are not necessary as are referenced by nomenclature
