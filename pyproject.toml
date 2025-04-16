@@ -3,7 +3,8 @@ name = "ai_factory_model"
 version = "0.0.2"
 description = "AI Library to authenticate and manage LLM models"
 authors = []
-license = { text = "MIT" }
+license = "MIT"
+license-files = []
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -32,7 +33,6 @@ classifiers=[
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
