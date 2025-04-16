@@ -10,7 +10,8 @@ from .llm import (
     BaseModelEmbedding,
     GoogleAIEmbeddingModel,
     OllamaChatModel,
-    load_from_file
+    load_from_file,
+    read_template
 )
 
 from .vectordb import (
@@ -33,6 +34,7 @@ __all__ = [
     "GoogleAIEmbeddingModel",
     "OllamaChatModel",
     "load_from_file",
+    "read_template",
     "VectorDBFactory",
     "BaseVectorDB",
     "AISearchVectorDB",

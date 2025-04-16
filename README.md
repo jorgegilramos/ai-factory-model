@@ -65,13 +65,31 @@ Además, si contamos con un fichero en el que tenemos las distintas configuracio
 
 ## Uso básico
 
+Usando el prompt:
 ```python
 from factory_model import ModelFactory
 
 model = ModelFactory.get_model("azai_gtp4o")
-respuesta = model.invoke("¿Cuál es la capital de Francia?")
-print(respuesta)
+params = ["Eres un guía turístico", "¿Cuál es la capital de Francia?"]
+
+response = model.prompt(params=params)
+
+print(response)
 ```
+
+Utilizando la instancia de langchain:
+```python
+from factory_model import ModelFactory
+
+response = model.get_client.invoke([
+    {"role": "system", "content": params[0]},
+    {"role": "user", "content": params[1]}
+])
+
+print(response)  # type: langchain_core.messages.ai.AIMessage
+print(f"{response.content}")
+```
+
 
 ## Estructura del proyecto
 
@@ -83,6 +101,7 @@ factory_model/
 │   ├── llm/
 │   ├── logger/
 │   ├── security/
+│   ├── vectordb/
 ├── pyproject.toml
 ├── requirements.txt
 └── README.md
@@ -105,6 +124,7 @@ Este paquete requiere las siguientes librerías externas:
 - `langchain-community`
 - `langchain-azure-ai`
 - `langchain-ollama`
+- `langchain-cohere`
 
 Las dependencias se instalarán automáticamente con `pip`.
 
