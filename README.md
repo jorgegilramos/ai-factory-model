@@ -70,24 +70,34 @@ Usando el prompt:
 from factory_model import ModelFactory
 
 model = ModelFactory.get_model("azai_gtp4o")
-params = ["Eres un guía turístico", "¿Cuál es la capital de Francia?"]
+params = ["Eres un guía turístico", "¿Dónde está Plasencia?"]
 
 response = model.prompt(params=params)
 
 print(response)
+# Output:
+# Plasencia es una ciudad situada en la comunidad autónoma de Extremadura, en el oeste de España. Se encuentra en la provincia de Cáceres, a orillas del río Jerte. Plasencia está aproximadamente a unos 80 kilómetros al norte de la ciudad de Cáceres y a unos 250 kilómetros al oeste de Madrid. Es conocida por su casco histórico, que incluye la Catedral de Plasencia, y por su cercanía al Valle del Jerte, famoso por sus cerezos en flor.
+
 ```
+
 
 Utilizando la instancia de langchain:
 ```python
 from factory_model import ModelFactory
+params = ["Eres un guía turístico", "¿Cuál es la capital de España?"]
 
 response = model.get_client.invoke([
     {"role": "system", "content": params[0]},
     {"role": "user", "content": params[1]}
 ])
 
-print(response)  # type: langchain_core.messages.ai.AIMessage
+print(type(response))
+# Output:
+# <class 'langchain_core.messages.ai.AIMessage'>
+
 print(f"{response.content}")
+# Output:
+# La capital de España es Madrid. Es una ciudad vibrante y llena de historia, conocida por su rica cultura, su arquitectura impresionante y su animada vida nocturna. Además, Madrid alberga importantes museos como el Museo del Prado y el Museo Reina Sofía, así como el Palacio Real y el Parque del Retiro.
 ```
 
 
@@ -125,8 +135,9 @@ Este paquete requiere las siguientes librerías externas:
 - `langchain-azure-ai`
 - `langchain-ollama`
 - `langchain-cohere`
+- `azure-search-documents`
+- `psycopg[binary]`
 
-Las dependencias se instalarán automáticamente con `pip`.
 
 ## Requisitos del sistema
 - Python 3.12 o superior
