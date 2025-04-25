@@ -9,7 +9,9 @@ SEP_PATTERN = "--- message ---"
 
 
 def load_from_file(file_path: str) -> dict:
-    """Carga un archivo JSON o YAML y lo convierte en un diccionario."""
+    """
+    Load a JSON or YAML file as a dictionary
+    """
 
     info(f"Loading models from file \"{file_path}\"")
     if not os.path.exists(file_path):

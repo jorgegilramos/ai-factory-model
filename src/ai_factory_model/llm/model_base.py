@@ -9,33 +9,59 @@ from .model_utils import read_template
 
 REGEX_VAR = r"{(.+?)}"
 
+# Label constants
+LABEL_MODEL_NAME = "model_name"
+LABEL_MODEL_VERSION = "model_version"
+LABEL_API_KEY = "api_key"
+LABEL_API_ENDPOINT = "api_endpoint"
+LABEL_API_AUTH = "api_auth"
+LABEL_MODEL_PARAMS = "model_params"
+
+# Value constants
+VALUE_SERVICE_PRINCIPAL = "service_principal"
+VALUE_API_KEY = "api_key"
+
 
 class BaseModel(ABC):
+
+    # Create attribute
+    auth_client = None
+    client = None
+
     def __init__(self, config: dict[str, str]):
         self.config = config
 
-        self.model_name = self.render_var("model_name")
-        self.version = self.render_var("model_version")
-        if "api_key" in config:
-            self.api_key = self.render_var("api_key", cast=str)
-        if "api_endpoint" in config:
-            self.endpoint = self.render_var("api_endpoint")
-        self.api_auth = self.render_var("api_auth", default="service_principal")
-        self.params = self.render_var("model_params", default={})
+        self.model_name = self.render_var(LABEL_MODEL_NAME)
+        self.version = self.render_var(LABEL_MODEL_VERSION)
 
-        # Client will be initilized in initialize_model
+        if LABEL_API_ENDPOINT in config:
+            self.endpoint = self.render_var(LABEL_API_ENDPOINT)
+
+        # Authentication
+        self.api_auth = self.render_var(LABEL_API_AUTH, default=VALUE_SERVICE_PRINCIPAL)
+        if self.api_auth == VALUE_SERVICE_PRINCIPAL:
+            # Create attribute
+            self.auth_client = None
+        elif self.api_auth == VALUE_API_KEY and LABEL_API_KEY in config:
+            self.api_key = self.render_var(LABEL_API_KEY, cast=str)
+
+        self.params = self.render_var(LABEL_MODEL_PARAMS, default={})
+
+        # Client will be initialized in initialize_model
         self.client = None
 
     @abstractmethod
     def initialize_model(self):
-        """Implementa la inicialización del modelo de IA."""
+        """
+        Initialization of model AI implementation.
+        """
         pass
 
     @property
     def get_client(self):
         return self.client
 
-    def prompt(self, params):
+    def prompt(self, params) -> str:
 
         system = params[0]
         input = params[1]
@@ -47,8 +73,8 @@ class BaseModel(ABC):
         ]
 
         response = self.client.invoke(messages).content
-        info(f"Duración: {str((datetime.datetime.now() - init).total_seconds())} segundos")
-        # clean_response = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL)
+        duration = (datetime.datetime.now() - init).total_seconds()
+        info(f"Duration: {duration:.4f} seconds")
         return response
 
     def prompt_template(self, path, params: dict):

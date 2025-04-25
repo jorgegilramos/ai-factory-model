@@ -6,22 +6,52 @@ from ..config import get_var, kwargs_decouple
 
 REGEX_VAR = r"{(.+?)}"
 
+# Label constants
+LABEL_MODEL_NAME = "model_name"
+LABEL_MODEL_VERSION = "model_version"
+LABEL_API_KEY = "api_key"
+LABEL_API_ENDPOINT = "api_endpoint"
+LABEL_API_AUTH = "api_auth"
+LABEL_INDEX_FIELDS = "index_fields"
+LABEL_INDEX_NAME = "index_name"
+LABEL_INDEX_VECTOR = "index_vector"
+LABEL_MODEL_PARAMS = "model_params"
+
+# Value constants
+VALUE_SERVICE_PRINCIPAL = "service_principal"
+VALUE_API_KEY = "api_key"
+
 
 class BaseVectorDB(ABC):
+
+    # Create attribute
+    auth_client = None
+    client = None
+
     def __init__(self, config: dict[str, str]):
 
         self.config = config
-        self.endpoint = self.render_var("api_endpoint")
-        self.fields = self.render_var("index_fields")
-        self.index_name = self.render_var("index_name", cast=str)
-        self.api_key = self.render_var("api_key", cast=str)
-        self.api_auth = self.render_var("api_auth", default="api_key")
-        self.index_vector = self.render_var("index_vector")
-        self.params = self.render_var("index_params", default={})
+
+        self.endpoint = self.render_var(LABEL_API_ENDPOINT)
+        self.fields = self.render_var(LABEL_INDEX_FIELDS)
+        self.index_name = self.render_var(LABEL_INDEX_NAME, cast=str)
+
+        # Authentication
+        self.api_auth = self.render_var(LABEL_API_AUTH, default=VALUE_API_KEY)
+        if self.api_auth == VALUE_SERVICE_PRINCIPAL:
+            # Create attribute
+            self.auth_client = None
+        elif self.api_auth == VALUE_API_KEY and LABEL_API_KEY in config:
+            self.api_key = self.render_var(LABEL_API_KEY, cast=str)
+
+        self.index_vector = self.render_var(LABEL_INDEX_VECTOR)
+        self.params = self.render_var(LABEL_MODEL_PARAMS, default={})
 
     @abstractmethod
     def initialize_vectorDB(self):
-        """Implementa la inicialización del modelo de IA."""
+        """
+        Initialization of model AI implementation.
+        """
         pass
 
     def get_search_client(self):

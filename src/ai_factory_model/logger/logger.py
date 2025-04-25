@@ -63,6 +63,7 @@ class AppLogger:
                     file_path,
                     when=LOGGING_WHEN,
                     interval=LOGGING_INTERVAL,
+                    encoding="utf-8"
                 )
                 fileHandler.suffix = "%Y%m%d_%H%M%S.log"
                 fileHandler.setFormatter(logFormatter)

@@ -1,8 +1,10 @@
-from .vectordb_base import BaseVectorDB
 from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import ResourceNotFoundError
 from azure.search.documents import SearchClient
 from azure.search.documents.models import VectorizedQuery
+from azure.identity import DefaultAzureCredential
+
+from .vectordb_base import BaseVectorDB, VALUE_SERVICE_PRINCIPAL, VALUE_API_KEY
 
 
 class AISearchVectorDB(BaseVectorDB):
@@ -12,9 +14,20 @@ class AISearchVectorDB(BaseVectorDB):
 
     def initialize_vectorDB(self, alias):
 
-        self.client = SearchClient(endpoint=self.endpoint,
-                                   index_name=self.index_name,
-                                   credential=AzureKeyCredential(self.api_key))
+        if self.api_auth == VALUE_SERVICE_PRINCIPAL:
+            # Azure Service Principal configured by environment variables.
+            # See ~azure.identity.EnvironmentCredential for more details.
+            self.client = SearchClient(endpoint=self.endpoint,
+                                       index_name=self.index_name,
+                                       credential=DefaultAzureCredential())
+        elif self.api_auth == VALUE_API_KEY:
+            # Azure API Token
+            self.client = SearchClient(endpoint=self.endpoint,
+                                       index_name=self.index_name,
+                                       credential=AzureKeyCredential(self.api_key))
+        else:
+            raise ValueError("Authorization should be \"service_principal\" or \"api_key\"")
+
         self.alias = alias
         return self
 

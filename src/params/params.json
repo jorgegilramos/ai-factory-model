@@ -5,7 +5,7 @@
         "model_version": "{AZURE_OPENAI_API_VERSION}",
         "api_key": "{AZURE_OPENAPI_KEY}",
         "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
-        "api_auth": "api_key",
+        "api_auth": "service_principal",
         "model_params": {
             "max_tokens": 512,
             "temperature": 0.00000001,
@@ -75,6 +75,7 @@
         "api_key": "{AI_SEARCH_KEY}",
         "index_vector": "abstractVector",
         "api_endpoint": "{AI_SEARCH_ENDPOINT}",
+        "api_auth": "api_key",
         "index_fields": [
             "abstract",
             "info_text",
@@ -94,6 +95,7 @@
         "index_key": "abstractKey",
         "index_vector": "abstractVector",
         "api_key": "",
+        "api_auth": "api_key",
         "api_endpoint": "host={POSTGRES_HOST} port={POSTGRES_PORT} dbname={POSTGRES_DATABASE} user={POSTGRES_USERNAME} password={POSTGRES_PASSWORD}",
         "index_fields": [
             "abstract",
