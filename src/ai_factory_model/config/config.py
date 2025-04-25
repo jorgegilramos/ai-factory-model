@@ -62,7 +62,3 @@ AZURE_TOKEN_URL = get_var("AZURE_TOKEN_URL", default="https://cognitiveservices.
 # GOOGLE_API_KEY = get_var("GOOGLE_API_KEY", "")
 
 MODELS_CONFIG_FILE = get_var("MODELS_CONFIG_FILE", "./src/params/params.json")
-
-# # Variables vector databases
-# VECTORDB_INDEX = get_var("VECTORDB_INDEX", None)
-# VECTORDB_EMBEDDING_MODEL = get_var("VECTORDB_EMBEDDING_MODEL", None)

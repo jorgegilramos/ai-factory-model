@@ -1,6 +1,6 @@
 [project]
 name = "ai_factory_model"
-version = "0.0.5"
+version = "0.0.6"
 description = "AI Library to authenticate and manage LLM models"
 authors = []
 license = "MIT"

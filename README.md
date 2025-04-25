@@ -1,37 +1,44 @@
-# LLM
+# ai-factory-model
 
-**LLM** es una librería Python modular orientada a la integración con múltiples modelos de lenguaje (LLMs), proveedores cloud y utilidades auxiliares para desarrollo e infraestructura.
 
-Esta librería está diseñada para facilitar la interacción con LLMs de OpenAI, Azure, Google y Ollama, integrando además autenticación, configuración externa, plantillas Jinja2, y componentes reutilizables.
+[![PyPI version](https://img.shields.io/pypi/v/ai-factory-model.svg)](https://pypi.org/project/ai-factory-model/)
+![Build Status](https://github.com/jorgegilramos/ai-factory-model/workflows/Python%20package/badge.svg)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/ai-factory-model)
 
-## Características
 
-- Soporte para múltiples modelos LLM:
-  - OpenAI (chat y embeddings)
+
+**ai-factory-model** is a modular Python library aimed at integrating with multiple language models (LLMs), cloud providers, and auxiliary utilities for development and infrastructure.
+
+This library is designed to facilitate interaction with LLMs from OpenAI, Azure, Google, and Ollama, also integrating authentication, external configuration, Jinja2 templates, and reusable components.
+
+## Features
+
+- Support for multiple LLM models:
+  - OpenAI (chat and embeddings)
   - Azure OpenAI
   - Google Generative AI
   - Ollama
-  - LangChain y variantes
-- Módulos para configuración (`decouple`, `YAML`)
-- Autenticación vía Azure Identity
-- Generación de contenido vía plantillas Jinja2
-- Separación clara de responsabilidades con módulos como:
+  - LangChain and variants
+- Configuration modules (`decouple`, `YAML`)
+- Authentication via Azure Identity
+- Content generation via Jinja2 templates
+- Clear separation of responsibilities with modules such as:
   - `logger`
   - `security`
   - `auth_clients`
-  - `model_*` (interfaces para distintos LLMs)
+  - `model_*`  (interfaces for different LLMs)
 
-## Instalación
+## Installation
 
-Desde PyPI:
+From PyPI:
 
 ```bash
 pip install ai-factory-model
 ```
 
 
-## Puesta a punto
-Para poder hacer uso de la factoría de modelos es necesario definir una serie de variables de entorno, que permiten la conexión a los distintos servicios de alojamiento de modelos:
+## Setup
+To use the model factory, you need to define a series of environment variables that allow connection to the various model hosting services:
 
 ```python
 AZURE_TENANT_ID = <id_tenant_azure>
@@ -40,7 +47,7 @@ AZURE_CLIENT_SECRET = <secret_passphrase_azure_client>
 AZURE_TOKEN_URL = <azure_url_token_generator>
 ```
 
-Para un mayor nivel de seguridad, se cuenta con conexión a KeyVault. Para definir la conexión al almacén de claves correspondiente, se debe usar:
+For enhanced security, there is a connection to KeyVault. To define the connection to the corresponding key store, use:
 ```python
 KV_NAME = <kv_name>
 KV_TENANT_ID = <id_kv_tenant>
@@ -48,24 +55,26 @@ KV_CLIENT_ID = <id_kv_client>
 KV_SECRET = <secret_passphrase_kv>
 ```
 
-Con la conexión a KeyVault establecida, los valores que se deben recuperar desde el almacén de claves deben especificarse siguiendo la siguiente nomenclatura:
+With the KeyVault connection established, the values to be retrieved from the key store should be specified using the following nomenclature:
+
 > VARIABLE_SECRET = kv{name-of-secret-at-kv}
 
-De esta forma, por ejemplo:
+For example:
 ```python
-# Pasamos de tener el secreto en raw
+# Transition from having the secret in raw form
 AZURE_CLIENT_SECRET = <secret_passphrase_azure_client>
 
-# A recuperarlo desde el KV
+# To retrieving it from the KV
 AZURE_CLIENT_SECRET = kv{<name_secret_azure_client>}
 ```
 
-Además, si contamos con un fichero en el que tenemos las distintas configuraciones de modelos que deseamos utilizar, debemos indicarlo con su correspondiente variable.
+Additionally, if you have a file containing the various model configurations you wish to use, you should specify it with the corresponding variable.
+
 > MODELS_CONFIG_FILE = <path_to_models_declarations_file>
 
-## Uso básico
+## Basic usage
 
-Usando el prompt:
+Using prompt:
 ```python
 from factory_model import ModelFactory
 
@@ -81,7 +90,7 @@ print(response)
 ```
 
 
-Utilizando la instancia de langchain:
+Using langchain instance:
 ```python
 from factory_model import ModelFactory
 params = ["Eres un guía turístico", "¿Cuál es la capital de España?"]
@@ -101,7 +110,7 @@ print(f"{response.content}")
 ```
 
 
-## Estructura del proyecto
+## Project structure
 
 ```
 factory_model/
@@ -117,9 +126,9 @@ factory_model/
 └── README.md
 ```
 
-## Requisitos y dependencias
+## Dependencies
 
-Este paquete requiere las siguientes librerías externas:
+This package requires the followind external libraries:
 
 - `python-decouple`
 - `PyYAML`
@@ -139,6 +148,6 @@ Este paquete requiere las siguientes librerías externas:
 - `psycopg[binary]`
 
 
-## Requisitos del sistema
+## Requirements
 - Python 3.12 o superior
-- Acceso a credenciales/API keys para los proveedores usados (OpenAI, Azure, etc.)
+- Credential access/API keys to your needed providers (OpenAI, Azure, etc.)

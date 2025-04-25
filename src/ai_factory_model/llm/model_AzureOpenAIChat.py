@@ -1,8 +1,9 @@
 from langchain_openai import AzureChatOpenAI
-from .model_base import BaseModel
 
-# from .auth_clients import AZURE_OPENAI_API_KEY, AzureAuthClient, AWSAuthClient
+from .model_base import BaseModel, VALUE_SERVICE_PRINCIPAL, VALUE_API_KEY
 from .auth_clients import AzureAuthClient
+
+# https://github.com/openai/openai-python/blob/main/examples/azure_ad.py
 
 
 class AzureOpenAIChatModel(BaseModel):
@@ -11,17 +12,20 @@ class AzureOpenAIChatModel(BaseModel):
         super().__init__(config)
 
     def initialize_model(self, alias):
-        if self.api_auth == "service_principal":
+        if self.api_auth == VALUE_SERVICE_PRINCIPAL:
             # Azure Service Principal
             self.auth_client = AzureAuthClient()
+
             self.client = AzureChatOpenAI(
                 azure_endpoint=self.endpoint,
-                azure_ad_token=self.auth_client.get_token(),
+                # Deprecated:
+                # azure_ad_token=self.auth_client.get_token(),
+                azure_ad_token_provider=self.auth_client.get_token_provider(),
                 azure_deployment=self.model_name,
                 api_version=self.version,
                 **self.params
             )
-        elif self.api_auth == "api_key":
+        elif self.api_auth == VALUE_API_KEY:
             # Azure API Token
             self.client = AzureChatOpenAI(
                 azure_endpoint=self.endpoint,
