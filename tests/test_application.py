@@ -22,7 +22,7 @@ def azure_openaichatmodel(env_testing):
             }
         })
     else:
-        return None
+        return None  # pragma: no cover
 
 
 def test_app_service_principal(env_testing):
@@ -35,7 +35,7 @@ def test_app_service_principal(env_testing):
         info(f"{response}")
         assert isinstance(response, str)
     else:
-        assert True
+        assert True  # pragma: no cover
 
 
 def test_app_api_key(env_testing, azure_openaichatmodel):
@@ -49,7 +49,7 @@ def test_app_api_key(env_testing, azure_openaichatmodel):
         info(f"{response}")
         assert isinstance(response, str)
     else:
-        assert True
+        assert True  # pragma: no cover
 
 
 def test_aimessage(env_testing):
@@ -66,4 +66,4 @@ def test_aimessage(env_testing):
         info(f"{response.content}")
         assert isinstance(response, AIMessage)
     else:
-        assert True
+        assert True  # pragma: no cover
