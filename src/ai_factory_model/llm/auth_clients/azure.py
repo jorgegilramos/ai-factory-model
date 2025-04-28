@@ -21,7 +21,13 @@ class AzureAuthClient:
 
     def __init__(self):
 
-        self.credential = ClientSecretCredential(
+        # self.credential = ClientSecretCredential(
+        #     tenant_id=AZURE_TENANT_ID,
+        #     client_id=AZURE_CLIENT_ID,
+        #     client_secret=AZURE_CLIENT_SECRET
+        # )
+
+        self.credential = self._create_credential(
             tenant_id=AZURE_TENANT_ID,
             client_id=AZURE_CLIENT_ID,
             client_secret=AZURE_CLIENT_SECRET
@@ -29,6 +35,13 @@ class AzureAuthClient:
 
         # Azure token provider
         self.token_provider = self._create_token_provider(self.credential)
+
+    def _create_credential(self, tenant_id, client_id, client_secret) -> ClientSecretCredential:
+        return ClientSecretCredential(
+            tenant_id=tenant_id,
+            client_id=client_id,
+            client_secret=client_secret
+        )
 
     def _should_refresh(self) -> bool:
         if self.token is not None:
