@@ -11,7 +11,10 @@ from .llm import (
     GoogleAIEmbeddingModel,
     OllamaChatModel,
     load_from_file,
-    read_template
+    create_template,
+    read_template,
+    render_template,
+    SEP_PATTERN
 )
 
 from .vectordb import (
@@ -34,9 +37,16 @@ __all__ = [
     "GoogleAIEmbeddingModel",
     "OllamaChatModel",
     "load_from_file",
+    "create_template",
     "read_template",
+    "render_template",
+    "SEP_PATTERN",
     "VectorDBFactory",
     "BaseVectorDB",
     "AISearchVectorDB",
     "PGVectorDB"
 ]
+
+
+# Package version
+__version__ = "0.0.7"

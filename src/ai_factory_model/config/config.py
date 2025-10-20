@@ -56,9 +56,4 @@ AZURE_CLIENT_ID = get_var("AZURE_CLIENT_ID", None)
 AZURE_CLIENT_SECRET = get_var("AZURE_CLIENT_SECRET", None)
 AZURE_TOKEN_URL = get_var("AZURE_TOKEN_URL", default="https://cognitiveservices.azure.com/.default")
 
-# These variables are not necessary as are referenced by nomenclature
-# AZURE_INFERENCE_CREDENTIAL = get_var("AZURE_INFERENCE_CREDENTIAL", "")
-# AZURE_INFERENCE_ENDPOINT = get_var("AZURE_INFERENCE_ENDPOINT", "")
-# GOOGLE_API_KEY = get_var("GOOGLE_API_KEY", "")
-
 MODELS_CONFIG_FILE = get_var("MODELS_CONFIG_FILE", "./src/params/params.json")

@@ -9,7 +9,8 @@ from .model_GoogleAIChat import GoogleAIChatModel
 from .model_base_embedding import BaseModelEmbedding
 from .model_GoogleAIEmbedding import GoogleAIEmbeddingModel
 from .model_OllamaChat import OllamaChatModel
-from .model_utils import load_from_file, read_template
+from .model_utils import load_from_file, create_template, read_template, \
+    render_template, SEP_PATTERN
 
 
 __all__ = [
@@ -25,5 +26,8 @@ __all__ = [
     "GoogleAIEmbeddingModel",
     "OllamaChatModel",
     "load_from_file",
-    "read_template"
+    "create_template",
+    "read_template",
+    "render_template",
+    "SEP_PATTERN"
 ]

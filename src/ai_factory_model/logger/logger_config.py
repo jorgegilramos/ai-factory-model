@@ -10,8 +10,8 @@ LOGGING_INTERVAL: int = int(config("AI_FACTORY_MODEL_LOGGING_INTERVAL", default=
 LOGGING_TITLE: str = config("AI_FACTORY_MODEL_LOGGING_TITLE", "ai-model-factory", cast=str)
 LOGGING_LEVEL: str = config("AI_FACTORY_MODEL_LOGGING_LEVEL", "INFO")
 LOGGING_HANDLERS: str = config("AI_FACTORY_MODEL_LOGGING_HANDLERS", "console,file_handler")
-LOGGING_FORMATTER: str = config("AI_FACTORY_MODEL_LOGGING_FORMATTER",
-                                "%(asctime)s - [%(name)s] - %(levelname)-5s - %(message)s")
+LOGGING_FORMAT: str = config("AI_FACTORY_MODEL_LOGGING_FORMAT",
+                             "%(asctime)s - [%(name)s] - %(levelname)-5s - %(message)s")
 
 # Debugging mode
 FORCE_LOG_DEBUG: bool = config("AI_FACTORY_MODEL_FORCE_LOG_DEBUG", default=False, cast=bool)

@@ -25,12 +25,12 @@ coverage html
 
 ```shell
 # Reinstall avoiding reinstalling dependencies
-pip install --upgrade --no-deps --force-reinstall dist\ai_factory_model-0.0.6-py3-none-any.whl
+pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.7-py3-none-any.whl
 ```
 
 ```shell
 # Reinstall with dependencies
-pip install dist\ai_factory_model-0.0.6-py3-none-any.whl --force-reinstall
+pip install dist\ai_factory_model-0.0.7-py3-none-any.whl --force-reinstall
 ```
 
 Check style guide enforcement
@@ -85,5 +85,7 @@ pip uninstall ai_factory_model
 | tox                    | 4.23.2  |
 
 ## Releases
+**Version 0.0.7**:
+   - Added render_template
 **Version 0.0.6**:
    - First version
