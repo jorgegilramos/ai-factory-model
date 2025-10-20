@@ -2,6 +2,12 @@ from unittest.mock import patch
 from src.ai_factory_model.llm import AzureOpenAIChatModel
 from src.ai_factory_model.llm.model_AzureOpenAIChat import AzureChatOpenAI
 
+from src.ai_factory_model import (
+    ModelFactory,
+    SEP_PATTERN
+)
+from jinja2 import Template
+
 
 def test_initialize_model_service_principal(env_testing):
     if env_testing:
@@ -161,5 +167,30 @@ def test_delete_model(env_testing):
         model.client = None
 
         assert model.client is None
+    else:
+        assert True  # pragma: no cover
+
+
+def test_prompt_render(env_testing):
+    if env_testing:
+
+        model = ModelFactory.get_model("azai_gtp4o")
+        params = {"system": "Eres un guía turístico", "user": "¿Qué visitar en Mérida de Extremadura?"}
+
+        template_content = (
+            f"{{{{ system }}}}"
+            f"{SEP_PATTERN}"
+            f"{{{{ user }}}}"
+        )
+        prompt_template = Template(template_content)
+
+        response = model.prompt_render(
+            template=prompt_template,
+            params=params,
+            sep_pattern=SEP_PATTERN
+        )
+
+        assert response is not None
+        assert isinstance(response, str)
     else:
         assert True  # pragma: no cover

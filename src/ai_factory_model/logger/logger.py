@@ -4,7 +4,7 @@ from logging.handlers import TimedRotatingFileHandler
 from pathlib import Path
 
 from .logger_config import LOGGING_DIR, LOGGING_FILE, LOGGING_WHEN, LOGGING_INTERVAL, \
-    LOGGING_TITLE, LOGGING_LEVEL, LOGGING_HANDLERS, LOGGING_FORMATTER
+    LOGGING_TITLE, LOGGING_LEVEL, LOGGING_HANDLERS, LOGGING_FORMAT, FORCE_LOG_DEBUG
 
 
 class AppLogger:
@@ -44,12 +44,13 @@ class AppLogger:
         self.logger.propagate = False
 
         if not self.logger.handlers and len(self.log_handlers) > 0:
-            level = getattr(logging, LOGGING_LEVEL.upper(), logging.INFO)
+            level = getattr(logging, LOGGING_LEVEL.upper(), logging.INFO) \
+                if not FORCE_LOG_DEBUG else logging.DEBUG
             self.logger.setLevel(level)
 
             # "%(asctime)s - [%(name)s] - %(levelname)-5s - %(message)s"
             logFormatter = logging.Formatter(
-                LOGGING_FORMATTER
+                LOGGING_FORMAT
             )
 
             # Add file handler if it is configured

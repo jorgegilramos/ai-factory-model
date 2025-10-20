@@ -2,9 +2,10 @@
 
 
 [![PyPI version](https://img.shields.io/pypi/v/ai-factory-model.svg)](https://pypi.org/project/ai-factory-model/)
+![Supported Python Versions](https://img.shields.io/pypi/pyversions/ai-factory-model)
 ![Build Status](https://github.com/jorgegilramos/ai-factory-model/workflows/Python%20package/badge.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/ai-factory-model)
-
+[![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
 **ai-factory-model** is a modular Python library aimed at integrating with multiple language models (LLMs), cloud providers, and auxiliary utilities for development and infrastructure.
@@ -76,12 +77,16 @@ Additionally, if you have a file containing the various model configurations you
 
 Using prompt:
 ```python
-from factory_model import ModelFactory
+from ai_factory_model import ModelFactory
 
 model = ModelFactory.get_model("azai_gtp4o")
 params = ["Eres un guía turístico", "¿Dónde está Plasencia?"]
 
 response = model.prompt(params=params)
+
+print(type(response))
+# Output:
+# <class 'str'>
 
 print(response)
 # Output:
@@ -92,7 +97,9 @@ print(response)
 
 Using langchain instance:
 ```python
-from factory_model import ModelFactory
+from ai_factory_model import ModelFactory
+
+model = ModelFactory.get_model("azai_gtp4o")
 params = ["Eres un guía turístico", "¿Cuál es la capital de España?"]
 
 response = model.get_client.invoke([
@@ -109,12 +116,42 @@ print(f"{response.content}")
 # La capital de España es Madrid. Es una ciudad vibrante y llena de historia, conocida por su rica cultura, su arquitectura impresionante y su animada vida nocturna. Además, Madrid alberga importantes museos como el Museo del Prado y el Museo Reina Sofía, así como el Palacio Real y el Parque del Retiro.
 ```
 
+Render a template:
+```python
+from ai_factory_model import ModelFactory, SEP_PATTERN
+
+model = ModelFactory.get_model("azai_gtp4o")
+params = {"system": "Eres un guía turístico", "user": "¿Qué visitar en Mérida de Extremadura?"}
+
+template_content = (
+    f"{{{{ system }}}}"
+    f"{SEP_PATTERN}"
+    f"{{{{ user }}}}"
+)
+prompt_template = Template(template_content)
+
+response = model.prompt_render(
+    template=prompt_template,
+    params=params,
+    sep_pattern=SEP_PATTERN
+)
+
+print(type(response))
+# Output:
+# <class 'str'>
+
+print(f"{response}")
+# Output:
+# ¡Mérida es una ciudad fascinante llena de historia y patrimonio! Es conocida por su impresionante legado romano, ya que fue una de las ciudades más importantes de la antigua Hispania. Aquí tienes una lista de los lugares imprescindibles que deberías visitar en Mérida: [...]
+```
+
+
 
 ## Project structure
 
 ```
-factory_model/
-├── factory_model/
+ai_factory_model/
+├── ai_factory_model/
 │   ├── __init__.py
 │   ├── config/
 │   ├── llm/

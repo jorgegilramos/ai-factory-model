@@ -33,7 +33,7 @@ class KeyVaultHandler:
         self.kv_client = SecretClient(self.kv_url, credential)
 
     def get_secret(self, secret_name: str) -> str:
-        debug(f"Get secret name: {secret_name}")
+        # debug(f"Get secret name: {secret_name}")
         try:
             secret = self.kv_client.get_secret(secret_name).value
         except HttpResponseError as e:
