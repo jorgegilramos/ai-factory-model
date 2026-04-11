@@ -25,12 +25,12 @@ coverage html
 
 ```shell
 # Reinstall wheel avoiding reinstalling dependencies
-pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.8-py3-none-any.whl
+pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.10-py3-none-any.whl
 ```
 
 ```shell
 # Reinstall wheel with dependencies
-pip install dist\ai_factory_model-0.0.8-py3-none-any.whl --force-reinstall
+pip install dist\ai_factory_model-0.0.10-py3-none-any.whl --force-reinstall
 ```
 
 ```shell
@@ -95,7 +95,7 @@ pip uninstall ai_factory_model
 
 
 ## Releases
-**Version 0.0.8**:
+**Version 0.0.10**:
    - Updated libraries versions
    - Implemented optional dependencies
 **Version 0.0.7**:
