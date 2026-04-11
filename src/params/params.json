@@ -25,6 +25,19 @@
             "frequency_penalty": 0.00005
         }
     },
+    "azai_gpt52": {
+        "connection_type": "AzureOpenAIChat",
+        "model_name": "{AZURE_OPENAI_CHAT_DEPLOYMENT_GPT52}",
+        "model_version": "{AZURE_OPENAI_API_VERSION}",
+        "api_key": "{AZURE_OPENAPI_KEY}",
+        "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
+        "api_auth": "service_principal",
+        "model_params": {
+            "max_completion_tokens": 512,
+            "temperature": 0.00000001,
+            "frequency_penalty": 0.000005
+        }
+    },
     "azai_embedding": {
         "connection_type": "AzureOpenAIEmbedding",
         "model_name": "pilotoAI-sd-embedding",

@@ -8,4 +8,4 @@ KV_NAME: str = config("KV_NAME", None)
 @pytest.fixture(scope="function")
 def env_testing():
 
-    return KV_NAME is not None
+    return KV_NAME is not None and KV_NAME != ""

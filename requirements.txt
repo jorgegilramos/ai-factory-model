@@ -1,17 +1,17 @@
-# numpy==1.26.4
-openai==1.72.0
-azure-core==1.33.0
-azure-identity==1.21.0
-azure-keyvault-secrets==4.9.0
-langchain==0.3.23
-langchain_openai==0.3.12
-langchain_azure_ai==0.1.2
-langchain_google_genai==2.1.2
-langchain_community==0.3.21
-langchain_ollama==0.3.1
-jinja2==3.1.6
+openai>=2.31.0
+azure-core>=1.39.0
+azure-identity>=1.25.3
+azure-keyvault-secrets>=4.10.0
+langchain>=1.2.15
+langchain_openai>=1.1.12
+langchain_azure_ai>=1.2.1
+# langchain_google_genai>=4.2.1
+# langchain_community>=0.4.1
+# langchain_ollama>=1.1.0
+jinja2>=3.1.6
 python-decouple==3.8
-pyyaml==6.0.2
-azure-search-documents==11.5.2
-psycopg[binary]==3.2.6
-langchain-cohere==0.4.3
+pyyaml>=6.0.3
+# azure-search-documents>=11.6.0
+# psycopg[binary]==3.2.6
+# langchain-cohere>=0.5.0
+

@@ -6,10 +6,10 @@ from .config import (
     kv_handler,
     kwargs_decouple,
     get_var,
-    AZURE_TENANT_ID,
-    AZURE_CLIENT_ID,
-    AZURE_CLIENT_SECRET,
-    AZURE_TOKEN_URL,
+    # AZURE_TENANT_ID,
+    # AZURE_CLIENT_ID,
+    # AZURE_CLIENT_SECRET,
+    # AZURE_TOKEN_URL,
     MODELS_CONFIG_FILE
 )
 
@@ -21,9 +21,9 @@ __all__ = [
     "kv_handler",
     "kwargs_decouple",
     "get_var",
-    "AZURE_TENANT_ID",
-    "AZURE_CLIENT_ID",
-    "AZURE_CLIENT_SECRET",
-    "AZURE_TOKEN_URL",
+    # "AZURE_TENANT_ID",
+    # "AZURE_CLIENT_ID",
+    # "AZURE_CLIENT_SECRET",
+    # "AZURE_TOKEN_URL",
     "MODELS_CONFIG_FILE"
 ]

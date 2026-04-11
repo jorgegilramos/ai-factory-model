@@ -67,3 +67,42 @@ def test_aimessage(env_testing):
         assert isinstance(response, AIMessage)
     else:
         assert True  # pragma: no cover
+
+
+@pytest.fixture
+def azure_openaichatmodel_kwargs(env_testing):
+    if env_testing:
+        # Only configure model when variables are present
+        return AzureOpenAIChatModel(config={
+            "connection_type": "AzureOpenAIChat",
+            "model_name": "{AZURE_OPENAI_CHAT_DEPLOYMENT_GPT52}",
+            "model_version": "{AZURE_OPENAI_API_VERSION}",
+            "api_key": "{AZURE_OPENAPI_KEY}",
+            "api_endpoint": "{AZURE_OPENAI_ENDPOINT}",
+            "api_auth": "api_key",
+            "model_params": {
+                # "max_tokens": 512,
+                "max_completion_tokens": 512,
+                "temperature": 0.00000001,
+                "frequency_penalty": 0.000005,
+                # "model_kwargs": {
+                #     "max_completion_tokens": 512
+                # }
+            }
+        })
+    else:
+        return None  # pragma: no cover
+
+
+def test_app_model_kwargs(env_testing, azure_openaichatmodel_kwargs):
+
+    if env_testing:
+        model: AzureOpenAIChatModel = azure_openaichatmodel_kwargs
+        model.initialize_model("azai_gpt52")
+        params = ["Eres un guía turístico", "¿Dónde está Plasencia?"]
+
+        response = model.prompt(params=params)
+        info(f"{response}")
+        assert isinstance(response, str)
+    else:
+        assert True  # pragma: no cover

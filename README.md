@@ -37,6 +37,14 @@ From PyPI:
 pip install ai-factory-model
 ```
 
+Optional modules:
+```bash
+pip install ai-factory-model[google_genai]
+pip install ai-factory-model[community]
+pip install ai-factory-model[ollama]
+pip install ai-factory-model[cohere]
+pip install ai-factory-model[pgvector]
+```
 
 ## Setup
 To use the model factory, you need to define a series of environment variables that allow connection to the various model hosting services:
@@ -176,12 +184,31 @@ This package requires the followind external libraries:
 - `azure-keyvault-secrets`
 - `langchain`
 - `langchain-openai`
-- `langchain-google-genai`
-- `langchain-community`
 - `langchain-azure-ai`
-- `langchain-ollama`
-- `langchain-cohere`
 - `azure-search-documents`
+
+With optional extra libraries 
+
+```bash
+pip install ai-factory-model[google_genai]
+```
+- `langchain-google-genai`
+
+```bash
+pip install ai-factory-model[community]
+```
+- `langchain-community`
+```bash
+pip install ai-factory-model[ollama]
+```
+- `langchain-ollama`
+```bash
+pip install ai-factory-model[cohere]
+```
+- `langchain-cohere`
+```bash
+pip install ai-factory-model[pgvector]
+```
 - `psycopg[binary]`
 
 
