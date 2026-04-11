@@ -24,13 +24,20 @@ coverage html
 
 
 ```shell
-# Reinstall avoiding reinstalling dependencies
-pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.7-py3-none-any.whl
+# Reinstall wheel avoiding reinstalling dependencies
+pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.8-py3-none-any.whl
 ```
 
 ```shell
-# Reinstall with dependencies
-pip install dist\ai_factory_model-0.0.7-py3-none-any.whl --force-reinstall
+# Reinstall wheel with dependencies
+pip install dist\ai_factory_model-0.0.8-py3-none-any.whl --force-reinstall
+```
+
+```shell
+# Install library from code
+pip install -e .
+# Install library with extra from code
+pip install -e .[google_genai]
 ```
 
 Check style guide enforcement
@@ -40,8 +47,10 @@ flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statist
 
 Tox
 ```shell
-# Command to test only one python version
+# Test only one python version
 tox -e py312
+# Test all python versions
+tox
 ```
 
 
@@ -53,38 +62,42 @@ pip uninstall ai_factory_model
 
 ## Dependencies
 
-| Library                | Version |
-|------------------------|---------|
-| openai                 | 1.72.0  |
-| azure-core             | 1.33.0  |
-| azure-identity         | 1.21.0  |
-| azure-keyvault-secrets | 4.9.0   |
-| langchain              | 0.3.23  |
-| langchain_openai       | 0.3.12  |
-| langchain_azure_ai     | 0.1.2   |
-| langchain_google_genai | 2.1.2   |
-| langchain_community    | 0.3.21  |
-| langchain_ollama       | 0.3.1   |
-| jinja2                 | 3.1.6   |
-| python-decouple        | 3.8     |
-| pyyaml                 | 6.0.2   |
-| azure-search-documents | 11.5.2  |
-| psycopg[binary]        | 3.2.6   |
-| langchain-cohere       | 0.4.3   |
+| Library                | Version   | Optional dependency |
+|------------------------|-----------|---------------------|
+| openai                 | >= 2.31.0 | base                |
+| azure-core             | >= 1.33.0 | base                |
+| azure-identity         | >= 1.25.3 | base                |
+| azure-keyvault-secrets | >= 4.10.0 | base                |
+| langchain              | >= 1.2.15 | base                |
+| langchain_openai       | >= 1.1.12 | base                |
+| langchain_azure_ai     | >= 1.2.1  | base                |
+| jinja2                 | >= 3.1.6  | base                |
+| python-decouple        | == 3.8    | base                |
+| pyyaml                 | >= 6.0.3  | base                |
+| azure-search-documents | >= 11.6.0 | base                |
+| langchain_google_genai | >= 4.2.1  | google_genai        |
+| langchain_community    | >= 0.4.1  | community           |
+| langchain_ollama       | >= 1.1.0  | ollama              |
+| langchain-cohere       | >= 0.5.0  | cohere              |
+| psycopg[binary]        | >= 3.2.6  | pgvector            |
 
 # Develop requirements
-| Library                | Version |
-|------------------------|---------|
-| build                  | 1.2.2   |
-| setuptools             | 78.1.0  |
-| wheel                  | 0.45.1  |
-| pytest                 | 8.3.5   |
-| pytest-env             | 1.1.5   |
-| coverage               | 7.8.0   |
-| flake8                 | 7.2.0   |
-| tox                    | 4.23.2  |
+| Library                | Version    |
+|------------------------|------------|
+| build                  | >= 1.2.2   |
+| setuptools             | >= 78.1.0  |
+| wheel                  | >= 0.45.1  |
+| pytest                 | >= 8.3.5   |
+| pytest-env             | >= 1.1.5   |
+| coverage               | >= 7.8.0   |
+| flake8                 | >= 7.2.0   |
+| tox                    | >= 4.23.2  |
+
 
 ## Releases
+**Version 0.0.8**:
+   - Updated libraries versions
+   - Implemented optional dependencies
 **Version 0.0.7**:
    - Added render_template
 **Version 0.0.6**:

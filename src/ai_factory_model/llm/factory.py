@@ -5,15 +5,41 @@ from ..config import MODELS_CONFIG_FILE
 from .model_base import BaseModel
 from .model_AzureOpenAIChat import AzureOpenAIChatModel
 from .model_AzureOpenAIEmbedding import AzureOpenAIEmbeddingModel
-from .model_LMStudioChat import LMStudioChat
 from .model_OpenAIChat import OpenAIChatModel
 from .model_OpenAIEmbedding import OpenAIEmbeddingModel
 from .model_AzureAIChat import AzureAIChatModel
+
+# Optional models
 from .model_GoogleAIChat import GoogleAIChatModel
 from .model_GoogleAIEmbedding import GoogleAIEmbeddingModel
 from .model_OllamaChat import OllamaChatModel
-from .model_utils import load_from_file
+from .model_LMStudioChat import LMStudioChat
 
+# Optional models
+# try:
+#     from .model_GoogleAIChat import GoogleAIChatModel
+#     from .model_GoogleAIEmbedding import GoogleAIEmbeddingModel
+# # except ImportError:
+# except Exception as e:
+#     error(f"Error importing GoogleAI models: {e}")
+#     GoogleAIChatModel = None
+#     GoogleAIEmbeddingModel = None
+
+# try:
+#     from .model_OllamaChat import OllamaChatModel
+# # except ImportError:
+# except Exception as e:
+#     error(f"Error importing OllamaChatModel: {e}")
+#     OllamaChatModel = None
+
+# try:
+#     from .model_LMStudioChat import LMStudioChat
+# except ImportError:
+#     LMStudioChat = None
+
+
+# Load utility
+from .model_utils import load_from_file
 
 cache = dict()
 

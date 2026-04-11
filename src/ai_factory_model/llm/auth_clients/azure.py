@@ -3,8 +3,15 @@ from azure.identity import ClientSecretCredential, get_bearer_token_provider
 from openai.lib.azure import AzureADTokenProvider
 from azure.core.credentials import AccessTokenInfo
 
-from ...config import AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, \
-    AZURE_TOKEN_URL
+from ...config import get_var
+
+# from ...config import AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, \
+#     AZURE_TOKEN_URL
+
+AZURE_TENANT_ID = get_var("AZURE_TENANT_ID", None)
+AZURE_CLIENT_ID = get_var("AZURE_CLIENT_ID", None)
+AZURE_CLIENT_SECRET = get_var("AZURE_CLIENT_SECRET", None)
+AZURE_TOKEN_URL = get_var("AZURE_TOKEN_URL", default="https://cognitiveservices.azure.com/.default")
 
 
 AZURE_TOKEN_DEFAULT_REFRESH_OFFSET = 300

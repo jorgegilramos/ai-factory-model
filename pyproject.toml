@@ -1,6 +1,10 @@
+[build-system]
+requires = ["setuptools>=78.1.0", "wheel>=0.45.1", "build>=1.2.2"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ai_factory_model"
-version = "0.0.7"
+version = "0.0.8"
 description = "AI Library to authenticate and manage LLM models"
 authors = []
 license = "MIT"
@@ -8,35 +12,80 @@ license-files = []
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "openai>=1.72.0",
-    "azure-core>=1.33.0",
-    "azure-identity>=1.21.0",
-    "azure-keyvault-secrets>=4.9.0",
-    "langchain>=0.3.23",
-    "langchain_openai>=0.3.12",
-    "langchain_azure_ai>=0.1.2; python_version<'3.13'",
-    "langchain_google_genai>=2.1.2",
-    "langchain_community>=0.3.21",
-    "langchain_ollama>=0.3.1",
+    "openai>=2.31.0",
+    "azure-core>=1.39.0",
+    "azure-identity>=1.25.3",
+    "azure-keyvault-secrets>=4.10.0",
+    "langchain>=1.2.15",
+    "langchain_openai>=1.1.12",
+    # "langchain_azure_ai>=1.2.1",  # Requires azure-search-documents<12.0,>=11.4 
+    # "langchain_google_genai>=4.2.1",
+    # "langchain_community>=0.4.1",
+    # "langchain_ollama>=1.1.0",
     "jinja2>=3.1.6",
-    "python-decouple>=3.8",
-    "pyyaml>=6.0.2",
-    "azure-search-documents==11.5.2",
-    "psycopg[binary]==3.2.6",
-    "langchain-cohere==0.4.3"
+    "python-decouple==3.8",
+    "pyyaml>=6.0.3",
+    "azure-search-documents>=11.6.0", 
+    # "psycopg[binary]==3.2.6",
+    # "langchain-cohere>=0.5.0"
 ]
 classifiers=[
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
-    "Framework :: Flask",
     "Intended Audience :: Developers",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: PyPy",
     "Operating System :: OS Independent",
-    "Topic :: Software Development :: Libraries :: Python Modules"
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: AI :: Artificial Intelligence",
 ]
 
-[build-system]
-requires = ["setuptools>=78.1.0", "wheel>=0.45.1", "build>=1.2.2"]
-build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+google_genai = [
+    "langchain_google_genai >= 4.2.1"
+]
+community = [
+    "langchain_community >= 0.4.1"
+]
+ollama = [
+    "langchain_ollama >= 1.1.0"
+]
+cohere = [
+    "langchain-cohere >= 0.5.0",
+]
+pgvector = [
+    "psycopg[binary] >= 3.2.6"
+]
+test = [
+    # "requests-mock>=1.12.1"
+    "pytest >= 8.3.5",
+    "pytest-env >= 1.1.5", 
+    "coverage >= 7.8.0",
+    # "pytest-cov >= 3.0",
+]
+dev = [
+    # Develop requirements
+    "build >= 1.2.2",
+    "setuptools >= 78.1.0",
+    "wheel >= 0.45.1",
+    "flake8 >= 7.2.0",
+    "tox >= 4.23.2",
+    "flake8 >= 4.0"
+]
+
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests*"]

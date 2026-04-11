@@ -50,7 +50,7 @@ def test_create_model(mock_azure_auth_client, env_testing):
         # Llamar al método create_model y verificar que se crea un nuevo modelo
         created_model = ModelFactory.create_model("test_alias", config)
         assert created_model.client.azure_endpoint == "https://example.com"
-        assert created_model.client.azure_ad_token is not None
+        assert created_model.client.azure_ad_token_provider is not None
         assert created_model.client.deployment_name == "test_model"
         assert created_model.client.openai_api_version == "1.0"
     else:

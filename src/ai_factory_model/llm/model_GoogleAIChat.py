@@ -1,4 +1,8 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
+try:
+    from langchain_google_genai import ChatGoogleGenerativeAI  # pyright: ignore[reportMissingImports]
+except ImportError:
+    ChatGoogleGenerativeAI = None
+
 from .model_base import BaseModel
 # https://python.langchain.com/docs/integrations/chat/google_generative_ai/
 
@@ -9,6 +13,9 @@ class GoogleAIChatModel(BaseModel):
         super().__init__(config)
 
     def initialize_model(self, alias):
+
+        if ChatGoogleGenerativeAI is None:
+            raise ImportError("langchain_google_genai is not installed. Please install it to use GoogleAIChatModel.")
         # import os
         # os.environ["GOOGLE_API_KEY"] = self.api_key
 

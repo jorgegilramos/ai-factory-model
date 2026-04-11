@@ -15,7 +15,7 @@ kv_handler = KeyVaultHandler(
     KV_TENANT_ID,
     KV_CLIENT_ID,
     KV_SECRET
-) if KV_NAME is not None else None
+) if KV_NAME is not None and KV_NAME != "" else None
 
 
 def kwargs_decouple(*args, **kwargs):
@@ -43,7 +43,7 @@ def get_var(var_name: str, *args, **kwargs):
     # Check if it is a keyvault key
     if isinstance(value, str):
         match = re.match(REGEX_KV_MATCH, value)
-        if match:
+        if match and kv_handler is not None:
             kv_key = match.groups()[0]
             # Only supported azure keyvault to keep secrets, extend to others when used
             kv: KeyVaultHandler = kwargs["kv"] if "kv" in kwargs else kv_handler
@@ -51,9 +51,9 @@ def get_var(var_name: str, *args, **kwargs):
     return value
 
 
-AZURE_TENANT_ID = get_var("AZURE_TENANT_ID", None)
-AZURE_CLIENT_ID = get_var("AZURE_CLIENT_ID", None)
-AZURE_CLIENT_SECRET = get_var("AZURE_CLIENT_SECRET", None)
-AZURE_TOKEN_URL = get_var("AZURE_TOKEN_URL", default="https://cognitiveservices.azure.com/.default")
+# AZURE_TENANT_ID = get_var("AZURE_TENANT_ID", None)
+# AZURE_CLIENT_ID = get_var("AZURE_CLIENT_ID", None)
+# AZURE_CLIENT_SECRET = get_var("AZURE_CLIENT_SECRET", None)
+# AZURE_TOKEN_URL = get_var("AZURE_TOKEN_URL", default="https://cognitiveservices.azure.com/.default")
 
 MODELS_CONFIG_FILE = get_var("MODELS_CONFIG_FILE", "./src/params/params.json")
