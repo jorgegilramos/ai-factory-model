@@ -2,7 +2,11 @@ from .vectordb_base import BaseVectorDB
 
 from logging import error
 import os
-import psycopg
+
+try:
+    import psycopg  # pyright: ignore[reportMissingImports]
+except ImportError:
+    psycopg = None
 
 # https://python.langchain.com/docs/integrations/vectorstores/pgvector/
 # https://github.com/langchain-ai/langchain-postgres/blob/main/examples/vectorstore.ipynb
@@ -15,7 +19,10 @@ class PGVectorDB(BaseVectorDB):
         super().__init__(config)
 
     def initialize_vectorDB(self, alias):
-        # obtener la conexión a la base de datos
+        if psycopg is None:
+            raise ImportError("psycopg is not installed. Please install it to use PGVectorDB.")
+
+        # Database connection using psycopg
         self.client = psycopg.connect(self.endpoint)
         self.alias = alias
         return self
@@ -29,7 +36,7 @@ class PGVectorDB(BaseVectorDB):
         except Exception as e:
             error(f"{e}")
         finally:
-            if cur is None:
+            if cur is not None:
                 cur.close()
         return result
 
