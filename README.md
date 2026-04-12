@@ -53,7 +53,7 @@ To use the model factory, you need to define a series of environment variables t
 AZURE_TENANT_ID = <id_tenant_azure>
 AZURE_CLIENT_ID = <id_client_azure>
 AZURE_CLIENT_SECRET = <secret_passphrase_azure_client>
-AZURE_TOKEN_URL = <azure_url_token_generator>
+AZURE_TOKEN_URL = <azure_url_token>
 ```
 
 For enhanced security, there is a connection to KeyVault. To define the connection to the corresponding key store, use:

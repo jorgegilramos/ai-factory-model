@@ -25,12 +25,12 @@ coverage html
 
 ```shell
 # Reinstall wheel avoiding reinstalling dependencies
-pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.10-py3-none-any.whl
+pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.11-py3-none-any.whl
 ```
 
 ```shell
 # Reinstall wheel with dependencies
-pip install dist\ai_factory_model-0.0.10-py3-none-any.whl --force-reinstall
+pip install dist\ai_factory_model-0.0.11-py3-none-any.whl --force-reinstall
 ```
 
 ```shell
@@ -38,6 +38,10 @@ pip install dist\ai_factory_model-0.0.10-py3-none-any.whl --force-reinstall
 pip install -e .
 # Install library with extra from code
 pip install -e .[google_genai]
+pip install -e .[community]
+pip install -e .[ollama]
+pip install -e .[cohere]
+pip install -e .[pgvector]
 ```
 
 Check style guide enforcement
@@ -95,7 +99,7 @@ pip uninstall ai_factory_model
 
 
 ## Releases
-**Version 0.0.10**:
+**Version 0.0.11**:
    - Updated libraries versions
    - Implemented optional dependencies
 **Version 0.0.7**:
