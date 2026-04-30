@@ -1,5 +1,9 @@
 # https://github.com/marketplace/actions/coveralls-github-action
-on: ["push", "pull_request"]
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
 
 name: Test Coveralls
 
