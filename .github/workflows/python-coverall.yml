@@ -1,0 +1,24 @@
+# https://github.com/marketplace/actions/coveralls-github-action
+on: ["push", "pull_request"]
+
+name: Test Coveralls
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+
+    # Step: Run tests and generate coverage report
+    - name: Run tests with coverage
+      run: |
+        coverage run -m pytest
+        coverage xml  # generates coverage.xml
+
+    # Step: Upload to Coveralls using Cobertura XML
+    - name: Upload coverage to Coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        format: cobertura
+        file: coverage.xml
