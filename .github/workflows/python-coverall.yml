@@ -1,11 +1,12 @@
 # https://github.com/marketplace/actions/coveralls-github-action
+
+name: Python Test Coverage
+
 on:
   push:
     branches: [ "main", "develop" ]
   pull_request:
     branches: [ "main" ]
-
-name: Test Coveralls
 
 jobs:
   build:
@@ -22,11 +23,20 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         if [ -f requirements_develop.txt ]; then pip install -r requirements_develop.txt; fi
 
+    # Step: Link with flake8
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
+
     # Step: Run tests and generate coverage report
     - name: Run tests with coverage
       run: |
         coverage run -m pytest
-        coverage xml  # generates coverage.xml
+        # generates coverage.xml
+        coverage xml
 
     # Step: Upload to Coveralls using Cobertura XML
     - name: Upload coverage to Coveralls
