@@ -1,7 +1,7 @@
 try:
     from langchain_community.embeddings import HuggingFaceEmbeddings  # pyright: ignore[reportMissingImports]
 except ImportError:
-    HuggingFaceEmbeddings = None
+    HuggingFaceEmbeddings = None  # pragma: no cover
 
 from .model_base_embedding import BaseModelEmbedding
 

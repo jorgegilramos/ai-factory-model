@@ -1,7 +1,7 @@
 try:
     from langchain_google_genai import GoogleGenerativeAIEmbeddings  # pyright: ignore[reportMissingImports]
 except ImportError:
-    GoogleGenerativeAIEmbeddings = None
+    GoogleGenerativeAIEmbeddings = None  # pragma: no cover
 
 from .model_base import BaseModel
 # https://python.langchain.com/v0.1/docs/integrations/text_embedding/google_generative_ai/

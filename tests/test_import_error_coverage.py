@@ -25,7 +25,3 @@ def test_import_error_coverage():
     # Verify that the except block was executed
     assert ChatGoogleGenerativeAI is None
 
-
-if __name__ == "__main__":
-    test_import_error_coverage()
-    print("Import error coverage test passed!")

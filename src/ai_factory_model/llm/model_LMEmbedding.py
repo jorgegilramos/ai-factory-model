@@ -1,7 +1,7 @@
 try:
     from openai import OpenAI  # pyright: ignore[reportMissingImports]
 except ImportError:
-    OpenAI = None
+    OpenAI = None  # pragma: no cover
 
 from .model_base_embedding import BaseModelEmbedding
 

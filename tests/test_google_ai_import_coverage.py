@@ -78,7 +78,3 @@ def test_google_ai_import_error_with_reload():
         if original_module is not None:
             sys.modules['src.ai_factory_model.llm.model_GoogleAIChat'] = original_module
 
-
-if __name__ == "__main__":
-    test_google_ai_import_error_with_reload()
-    print("Import error coverage test with reload passed!")
