@@ -1,12 +1,13 @@
 # ai-factory-model
 
-
 [![PyPI version](https://img.shields.io/pypi/v/ai-factory-model.svg)](https://pypi.org/project/ai-factory-model/)
 ![Supported Python Versions](https://img.shields.io/pypi/pyversions/ai-factory-model)
 ![Build Status](https://github.com/jorgegilramos/ai-factory-model/workflows/Python%20package/badge.svg)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/ai-factory-model)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Coverage Status](https://coveralls.io/repos/github/jorgegilramos/ai-factory-model/badge.svg?branch=main)](https://coveralls.io/github/jorgegilramos/ai-factory-model?branch=main)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/ai-factory-model)
 
+## Description
 
 **ai-factory-model** is a modular Python library aimed at integrating with multiple language models (LLMs), cloud providers, and auxiliary utilities for development and infrastructure.
 

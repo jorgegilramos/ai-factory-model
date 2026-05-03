@@ -1,4 +1,12 @@
 # ai-factory-model
+
+[![PyPI version](https://img.shields.io/pypi/v/ai-factory-model.svg)](https://pypi.org/project/ai-factory-model/)
+![Supported Python Versions](https://img.shields.io/pypi/pyversions/ai-factory-model)
+![Build Status](https://github.com/jorgegilramos/ai-factory-model/workflows/Python%20package/badge.svg)
+[![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Coverage Status](https://coveralls.io/repos/github/jorgegilramos/ai-factory-model/badge.svg?branch=develop)](https://coveralls.io/github/jorgegilramos/ai-factory-model?branch=develop)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/ai-factory-model)
+
 ## Packaging
 
 Build package
@@ -25,12 +33,12 @@ coverage html
 
 ```shell
 # Reinstall wheel avoiding reinstalling dependencies
-pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.11-py3-none-any.whl
+pip install --no-deps --force-reinstall dist\ai_factory_model-0.0.12-py3-none-any.whl
 ```
 
 ```shell
 # Reinstall wheel with dependencies
-pip install dist\ai_factory_model-0.0.11-py3-none-any.whl --force-reinstall
+pip install dist\ai_factory_model-0.0.12-py3-none-any.whl --force-reinstall
 ```
 
 ```shell
@@ -99,7 +107,7 @@ pip uninstall ai_factory_model
 
 
 ## Releases
-**Version 0.0.11**:
+**Version 0.0.12**:
    - Updated libraries versions
    - Implemented optional dependencies
 **Version 0.0.7**:

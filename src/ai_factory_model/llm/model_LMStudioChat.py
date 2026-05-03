@@ -1,7 +1,7 @@
 try:
     from langchain_openai import ChatOpenAI  # pyright: ignore[reportMissingImports]
 except ImportError:
-    ChatOpenAI = None
+    ChatOpenAI = None  # pragma: no cover
 
 import re
 from .model_base import BaseModel

@@ -1,7 +1,7 @@
 try:
     from langchain_google_genai import ChatGoogleGenerativeAI  # pyright: ignore[reportMissingImports]
 except ImportError:
-    ChatGoogleGenerativeAI = None
+    ChatGoogleGenerativeAI = None  # pragma: no cover
 
 from .model_base import BaseModel
 # https://python.langchain.com/docs/integrations/chat/google_generative_ai/

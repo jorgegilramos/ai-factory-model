@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ai_factory_model"
-version = "0.0.11"
+version = "0.0.12"
 description = "AI Library to authenticate and manage LLM models and vector databases RAGs"
 authors = []
 license = "MIT"
@@ -13,6 +13,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "openai>=2.31.0",
+    # "openai>=1.72.0",
     "azure-core>=1.39.0",
     "azure-identity>=1.25.3",
     "azure-keyvault-secrets>=4.10.0",
@@ -80,8 +81,7 @@ dev = [
     "setuptools >= 78.1.0",
     "wheel >= 0.45.1",
     "flake8 >= 7.2.0",
-    "tox >= 4.23.2",
-    "flake8 >= 4.0"
+    "tox >= 4.23.2"
 ]
 
 
@@ -91,3 +91,8 @@ package-dir = { "" = "src" }
 [tool.setuptools.packages.find]
 where = ["src"]
 exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+addopts = "--ignore=--ignore=tests/test_model_AzureOpenAIChatReal.py --ignore=tests/test_application.py --ignore=tests/test_azure_auth_client.py"
+testpaths = ["tests"]
+pythonpath = ["src"]

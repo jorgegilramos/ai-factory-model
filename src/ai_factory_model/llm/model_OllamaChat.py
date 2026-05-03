@@ -1,10 +1,11 @@
 try:
     from langchain_ollama import ChatOllama  # pyright: ignore[reportMissingImports]
-except ImportError:
+except ImportError:  # pragma: no cover
     ChatOllama = None
 from .model_base import BaseModel
 
 # https://python.langchain.com/docs/integrations/chat/google_generative_ai/
+# Model Names: Updated to typical Ollama models (llama2, mistral, codellama, neural-chat)
 
 
 class OllamaChatModel(BaseModel):
